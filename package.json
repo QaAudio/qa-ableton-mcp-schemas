@@ -1,0 +1,26 @@
+{
+  "name": "@quantumaudio/ableton-mcp-schemas",
+  "version": "0.1.0",
+  "description": "Shared Zod schemas + types for the qa-ableton-mcp wire format (kernel serializers ↔ MCP outputSchema).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.14.1"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
