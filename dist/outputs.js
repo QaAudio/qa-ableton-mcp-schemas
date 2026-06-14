@@ -132,6 +132,12 @@ export const clipPlacementSchema = z.object({
     arrangementClipCount: z.number().int().nonnegative(),
     status: z.enum(["empty", "session_only", "arrangement_only", "both"]),
 });
+/** Lightweight arrangement clip row for UI minimaps (scan_context overview). */
+export const arrangementClipSummarySchema = z.object({
+    startTime: z.number(),
+    endTime: z.number(),
+    color: z.number().optional(),
+});
 export const trackOverviewSchema = z.object({
     addr: trackAddrSchema,
     index: z.number().int().nonnegative(),
@@ -144,6 +150,10 @@ export const trackOverviewSchema = z.object({
     mixer: mixerSchema,
     clipSlots: z.array(clipSlotSchema),
     arrangementClipCount: z.number().int().nonnegative().optional(),
+    /** Arrangement clip segments for UI minimaps (capped in concise mode). */
+    arrangementClips: z.array(arrangementClipSummarySchema).optional(),
+    /** Track accent color from first arrangement clip, else first occupied session clip. */
+    color: z.number().nullable().optional(),
     clipPlacement: clipPlacementSchema.optional(),
     devices: z.array(deviceSummarySchema).optional(),
     mutedViaSolo: z.boolean().optional(),

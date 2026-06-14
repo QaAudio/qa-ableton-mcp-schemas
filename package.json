@@ -4,9 +4,11 @@
   "description": "Shared Zod schemas + types for the qa-ableton-mcp wire format (kernel serializers ↔ MCP outputSchema).",
   "license": "Apache-2.0",
   "type": "module",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
   },

@@ -187,6 +187,13 @@ export declare const clipPlacementSchema: z.ZodObject<{
     }>;
 }, z.core.$strip>;
 export type SerializedClipPlacement = z.infer<typeof clipPlacementSchema>;
+/** Lightweight arrangement clip row for UI minimaps (scan_context overview). */
+export declare const arrangementClipSummarySchema: z.ZodObject<{
+    startTime: z.ZodNumber;
+    endTime: z.ZodNumber;
+    color: z.ZodOptional<z.ZodNumber>;
+}, z.core.$strip>;
+export type SerializedArrangementClipSummary = z.infer<typeof arrangementClipSummarySchema>;
 export declare const trackOverviewSchema: z.ZodObject<{
     addr: z.ZodObject<{
         kind: z.ZodLiteral<"track">;
@@ -262,6 +269,12 @@ export declare const trackOverviewSchema: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
     arrangementClipCount: z.ZodOptional<z.ZodNumber>;
+    arrangementClips: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        startTime: z.ZodNumber;
+        endTime: z.ZodNumber;
+        color: z.ZodOptional<z.ZodNumber>;
+    }, z.core.$strip>>>;
+    color: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     clipPlacement: z.ZodOptional<z.ZodObject<{
         sessionFilledSlots: z.ZodNumber;
         sessionNoteCount: z.ZodNumber;
@@ -408,6 +421,12 @@ export declare const getContextOutputSchema: z.ZodObject<{
             }, z.core.$strip>>;
         }, z.core.$strip>>;
         arrangementClipCount: z.ZodOptional<z.ZodNumber>;
+        arrangementClips: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            startTime: z.ZodNumber;
+            endTime: z.ZodNumber;
+            color: z.ZodOptional<z.ZodNumber>;
+        }, z.core.$strip>>>;
+        color: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         clipPlacement: z.ZodOptional<z.ZodObject<{
             sessionFilledSlots: z.ZodNumber;
             sessionNoteCount: z.ZodNumber;
@@ -576,6 +595,7 @@ export declare const getTrackOutputSchema: z.ZodObject<{
         }, z.core.$strip>>;
     }, z.core.$strip>>;
     arrangementClipCount: z.ZodOptional<z.ZodNumber>;
+    color: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     clipPlacement: z.ZodOptional<z.ZodObject<{
         sessionFilledSlots: z.ZodNumber;
         sessionNoteCount: z.ZodNumber;
